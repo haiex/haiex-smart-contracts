@@ -235,7 +235,7 @@ contract Haiex  {
 
             //Swap the USD to token
             router.swapExactTokensForTokens(
-            usd,
+            usdTaxed,
             0,
             path,
             msg.sender,
@@ -311,15 +311,6 @@ contract Haiex  {
     function getHTGReserve() public view returns(uint256){
         return HTGToken.totalSupply();
     }
-
-    function emergencyWithdraw(address recipient) public onlyOwner  returns(bool){
-       uint256 balance = USDToken.balanceOf(address(this));
-       USDToken.transfer(recipient, balance);
-       return true;
-    }
-
-
-
 
 
     function sub(uint256 a, uint256 b) internal pure returns (uint256) {
